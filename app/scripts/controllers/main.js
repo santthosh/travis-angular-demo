@@ -5,6 +5,9 @@ angular.module('travisAngularDemoApp')
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
+      'Grunt',
+      'Bower',
+      'Travis',
       'Karma'
     ];
   });
