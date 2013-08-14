@@ -15,6 +15,7 @@ before_script:
   - 'bower install'
   - 'gem install travis-artifacts'
 after_script:
+  - 'travis-artifacts upload --path coverage --target-path artifacts/$TRAVIS_BRANCH/coverage'
   - 'plato -r -d report -l .jshintrc -t "Travis AngularJS Demo" -x .json app/scripts'
   - 'travis-artifacts upload --path report --target-path artifacts/$TRAVIS_BRANCH/report'
   - 'zip -r dist.$TRAVIS_BUILD_ID.$TRAVIS_JOB_ID.zip dist'
