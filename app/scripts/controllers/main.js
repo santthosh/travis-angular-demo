@@ -8,6 +8,7 @@ angular.module('travisAngularDemoApp')
       'Grunt',
       'Bower',
       'Travis',
+      'Plato',
       'Karma'
     ];
   });
