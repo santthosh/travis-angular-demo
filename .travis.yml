@@ -2,6 +2,18 @@ language: node_js
 node_js:
   - '0.8'
   - '0.10'
+env:
+ global:
+   - 'ARTIFACTS_AWS_REGION=us-west-2'
+   - 'ARTIFACTS_S3_BUCKET=travis-angular-demo'
+   - secure:'GHtAoatvRV9k4Brn9wohvvVfdDl8MZFQ9yMIisgtsIyKLrn5I3aw7SBvUzrEFiwrH6xyfT8KCNYtQJWs5dBvrcSbTua+L2MqMkwUqm8KnvZzQPzls/XXW8xc1ij8B7UDQwBuCpnkBxPYB4z1amtHC4A8Un5v0CjVKDKdsSXp4Jc='
+   - secure:'XYu3nvdl7jI1Us2BZ6ltqIQdfaHqWCnLTSyI6Obu8cuGlUh93vRqRSpj+eGyJzhrzpME8ayyMPYLwkbmiywO8160ajs+hebX/K5xuYczfcFCI136Xm/eULBvOeTMqQlBiUy3ooBf2gX2L1JCdytDEls9SMjw3NZALS51zCs+op0='
 before_script:
-  - 'npm install -g bower grunt-cli'
+  - 'npm install -g bower grunt-cli plato'
   - 'bower install'
+  - 'gem install travis-artifacts'
+after_script:
+  - 'plato -r -d report -l .jshintrc -t "Travis AngularJS Demo" -x .json app'
+  - 'travis-artifacts upload --path report --target-path artifacts/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID'
+after_test:
+  - 'travis-artifacts upload --path dist --target-path artifacts/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID'
