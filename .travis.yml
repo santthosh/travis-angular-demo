@@ -19,4 +19,4 @@ after_script:
   - 'travis-artifacts upload --path report --target-path artifacts/$TRAVIS_BRANCH/report'
 after_test:
   - 'zip -r dist.$TRAVIS_BUILD_ID.$TRAVIS_JOB_ID dist'
-  - 'travis-artifacts upload --path dist --target-path artifacts/$TRAVIS_BRANCH/dist'
+  - 'travis-artifacts upload --path dist.$TRAVIS_BUILD_ID.$TRAVIS_JOB_ID.zip --target-path artifacts/$TRAVIS_BRANCH/dist'
