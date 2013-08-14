@@ -16,6 +16,7 @@ before_script:
   - 'gem install travis-artifacts'
 after_script:
   - 'plato -r -d report -l .jshintrc -t "Travis AngularJS Demo" -x .json app/scripts'
-  - 'travis-artifacts upload --path report --target-path artifacts/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID'
+  - 'travis-artifacts upload --path report --target-path artifacts/$TRAVIS_BRANCH/report'
 after_test:
-  - 'travis-artifacts upload --path dist --target-path artifacts/$TRAVIS_BUILD_ID/$TRAVIS_JOB_ID'
+  - 'zip -r dist.$TRAVIS_BUILD_ID.$TRAVIS_JOB_ID dist'
+  - 'travis-artifacts upload --path dist --target-path artifacts/$TRAVIS_BRANCH/dist'
