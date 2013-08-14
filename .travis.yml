@@ -9,6 +9,8 @@ env:
    - secure: "GHtAoatvRV9k4Brn9wohvvVfdDl8MZFQ9yMIisgtsIyKLrn5I3aw7SBvUzrEFiwrH6xyfT8KCNYtQJWs5dBvrcSbTua+L2MqMkwUqm8KnvZzQPzls/XXW8xc1ij8B7UDQwBuCpnkBxPYB4z1amtHC4A8Un5v0CjVKDKdsSXp4Jc="
    - secure: "XYu3nvdl7jI1Us2BZ6ltqIQdfaHqWCnLTSyI6Obu8cuGlUh93vRqRSpj+eGyJzhrzpME8ayyMPYLwkbmiywO8160ajs+hebX/K5xuYczfcFCI136Xm/eULBvOeTMqQlBiUy3ooBf2gX2L1JCdytDEls9SMjw3NZALS51zCs+op0="
 before_script:
+  - 'export DISPLAY=:99.0'
+  - 'sh -e /etc/init.d/xvfb start'
   - 'npm install -g bower grunt-cli plato'
   - 'bower install'
   - 'gem install travis-artifacts'
