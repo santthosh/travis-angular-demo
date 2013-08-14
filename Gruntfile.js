@@ -13,6 +13,9 @@ var mountFolder = function (connect, dir) {
 // 'test/spec/**/*.js'
 
 module.exports = function (grunt) {
+  // require it at the top and pass in the grunt instance
+  require('time-grunt')(grunt);
+
   // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
