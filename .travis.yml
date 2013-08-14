@@ -17,5 +17,5 @@ before_script:
 after_script:
   - 'plato -r -d report -l .jshintrc -t "Travis AngularJS Demo" -x .json app/scripts'
   - 'travis-artifacts upload --path report --target-path artifacts/$TRAVIS_BRANCH/report'
-  - 'zip -r dist.$TRAVIS_BUILD_ID.$TRAVIS_JOB_ID dist'
+  - 'zip -r dist.$TRAVIS_BUILD_ID.$TRAVIS_JOB_ID.zip dist'
   - 'travis-artifacts upload --path dist.$TRAVIS_BUILD_ID.$TRAVIS_JOB_ID.zip --target-path artifacts/$TRAVIS_BRANCH/dist'
